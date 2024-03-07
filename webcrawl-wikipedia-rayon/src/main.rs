@@ -21,7 +21,7 @@ struct ProcessedPage {
     data: String,
 }
 
-const PAGES: [&str; 9] = [
+const PAGES: [&str; 20] = [
     "Giannis Antetokounmpo",
     "James Harden",
     "Russell Westbrook",
@@ -31,6 +31,17 @@ const PAGES: [&str; 9] = [
     "Kobe Bryant",
     "Michael Jordan",
     "Shaquille O'Neal",
+    "a",
+    "hello",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
 ];
 
 fn process_page(page: &Page<Client>) -> ProcessedPage {
@@ -45,6 +56,7 @@ fn process_page(page: &Page<Client>) -> ProcessedPage {
 //times how long it takes to process the pages and total time
 fn main() {
     //start timer
+    let mut total_word_count = 0;
     let start = std::time::Instant::now();
     let wikipedia = Wikipedia::<Client>::default();
     let pages: Vec<_> = PAGES
@@ -63,6 +75,7 @@ fn main() {
         println!("First sentence: {}", first_sentence);
         //count the number of words in the page
         let word_count = page.data.split_whitespace().count();
+        total_word_count += word_count;
         println!("Word count: {}", word_count);
         //prints time it took to process each page
         println!("Page time: {:?}", start_page.elapsed());
@@ -75,4 +88,5 @@ fn main() {
     );
     println!("Total number of pages: {}", PAGES.len());
     println!("Number of threads: {}", rayon::current_num_threads());
+    println!("Total Word count: {}", total_word_count);
 }

@@ -74,7 +74,7 @@ fn main() {
     println!("Dining Philosophers Problem:  15 Philosophers, 4 Forks...Yikes!!");
 
     //we only have 4 forks at the table
-    let forks = (0..4)
+    let forks = (0..6)
         .map(|id| {
             Arc::new(Fork {
                 id,
@@ -96,6 +96,8 @@ fn main() {
         ("Heraclitus", 1, 2),
         ("Democritus", 2, 3),
         ("Diogenes", 3, 0),
+        ("Diogenes 1", 4, 5),
+        ("Diogenes 2", 4, 5),
         ("Epicurus", 0, 1),
         ("Zeno of Citium", 1, 2),
         ("Thales of Miletus", 2, 3),
