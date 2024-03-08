@@ -34,7 +34,7 @@ fn add_edge(graph: &mut UnGraph<&Fighter, f32>, nodes: &[NodeIndex], a: usize, b
 fn main() {
     let mut graph = UnGraph::new_undirected();
 
-    let fighters = [
+    let mut fighters = [
         Fighter::new("Dustin Poirier"),
         Fighter::new("Khabib Nurmagomedov"),
         Fighter::new("Jose Aldo"),
@@ -60,7 +60,7 @@ fn main() {
         let degree = graph.edges_directed(node, Direction::Outgoing).count() as f32;
         let closeness = 1.0 / degree;
         println!("The closeness centrality of {} is {:.2}", name, closeness);
-
+        
         // Explanation
         match name.as_str() {
             "Conor McGregor" => println!(
